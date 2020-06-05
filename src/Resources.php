@@ -7,20 +7,30 @@ class Resources
     private $bootstrapAppPhp;
     private $bootstrapEnvPhp;
 
+    protected function bootstrapStub($stub)
+    {
+        return 'bootstrap' . DIRECTORY_SEPARATOR . $stub;
+    }
+
+    protected function resourceStub($stub)
+    {
+        return 'resources' . DIRECTORY_SEPARATOR . $stub;
+    }
+
     public function __construct()
     {
-        $this->bootstrapAppPhp = 'bootstrap' . DIRECTORY_SEPARATOR . 'app.php';
-        $this->bootstrapEnvPhp = 'bootstrap' . DIRECTORY_SEPARATOR . 'env.php';
+        $this->bootstrapAppPhp = $this->bootstrapStub('app.php');
+        $this->bootstrapEnvPhp = $this->bootstrapStub('env.php');
     }
 
     public function sourceBootstrapAppPhp()
     {
-        return multienv_path($this->bootstrapAppPhp);
+        return multienv_path($this->resourceStub($this->bootstrapAppPhp));
     }
 
     public function sourceBootstrapEnvPhp()
     {
-        return multienv_path($this->bootstrapEnvPhp);
+        return multienv_path($this->resourceStub($this->bootstrapEnvPhp));
     }
 
     public function targetBootstrapAppPhp()

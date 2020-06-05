@@ -3,20 +3,28 @@
 namespace Antares\Multienv\Tests\Unit;
 
 use Antares\Multienv\Resources;
-use Orchestra\Testbench\TestCase;
+use Antares\Multienv\Tests\TestCase;
+use Illuminate\Support\Facades\Artisan;
 
 class SetupCommandTest extends TestCase
 {
-    /** @test */
-    public function execute_and_validate_setup_command()
+    private function certifyDirectory($target)
     {
-        $targetDir = base_path('bootstrap');
+        $targetDir = base_path($target);
         if (!file_exists($targetDir)) {
             mkdir($targetDir);
         }
         $this->assertDirectoryExists($targetDir);
+    }
 
-        $this->artisan('antares:multienv-setup')->assertExitCode(0);
+    /** @test */
+    public function execute_and_validate_setup_command()
+    {
+        $this->certifyDirectory('bootstrap');
+        $this->certifyDirectory('env');
+
+        Artisan::call('antares:multienv-setup');
+        $this->logText(Artisan::output(), 'Artisan::output()');
 
         $resources = new Resources();
 
