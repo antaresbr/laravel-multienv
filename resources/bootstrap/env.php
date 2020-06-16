@@ -11,6 +11,6 @@ if (empty($envId) and isset($_ENV['APP_ENV_ID'])) {
     $envId = $_ENV['APP_ENV_ID'];
 }
 
-$envId = !empty($envId) ? ".{$envId}" : '';
+$envId = !empty($envId) ? ".{$envId}" : '.local';
 
 $app->loadEnvironmentFrom(".env{$envId}");

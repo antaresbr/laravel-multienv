@@ -76,7 +76,7 @@ class SetupCommand extends Command
         $resources = new Resources();
 
         $this->copyFile($resources->sourceBootstrapAppPhp(), $resources->targetBootstrapAppPhp(), true);
-        $this->copyFile($resources->sourceBootstrapEnvPhp(), $resources->targetBootstrapEnvPhp());
+        $this->copyFile($resources->sourceBootstrapEnvPhp(), $resources->targetBootstrapEnvPhp(), true);
 
         $this->moveFile(base_path('.env.example'), $this->env_path('.env.example'));
         $this->moveFile(base_path('.env'), $this->env_path('.env.local'));
