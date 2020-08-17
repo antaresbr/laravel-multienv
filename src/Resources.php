@@ -25,12 +25,12 @@ class Resources
 
     public function sourceBootstrapAppPhp()
     {
-        return multienv_path($this->resourceStub($this->bootstrapAppPhp));
+        return ai_multienv_path($this->resourceStub($this->bootstrapAppPhp));
     }
 
     public function sourceBootstrapEnvPhp()
     {
-        return multienv_path($this->resourceStub($this->bootstrapEnvPhp));
+        return ai_multienv_path($this->resourceStub($this->bootstrapEnvPhp));
     }
 
     public function targetBootstrapAppPhp()

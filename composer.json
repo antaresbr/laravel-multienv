@@ -20,7 +20,7 @@
     },
     "autoload": {
         "files": [
-            "helpers.php"
+            "support/helpers.php"
         ],
         "psr-4": {
             "Antares\\Multienv\\": "src/"
