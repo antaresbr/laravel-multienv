@@ -16,15 +16,20 @@ if ($app->runningInConsole()) {
 if (isset($_SERVER['HTTP_APP_ENV_ID'])) {
     $envId = $_SERVER['HTTP_APP_ENV_ID'];
 }
-
 if (empty($envId) and isset($_ENV['APP_ENV_ID'])) {
     $envId = $_ENV['APP_ENV_ID'];
 }
+if (empty($envId)) {
+    $envId = 'default';
+}
+if (!isset($_ENV['APP_ENV_ID']) or $_ENV['APP_ENV_ID'] != $envId) {
+    $_ENV['APP_ENV_ID'] = $envId;
+}
 
-$envFile = $app->environmentPath() . DIRECTORY_SEPARATOR . '.env.' . (!empty($envId) ? "{$envId}" : 'default');
+$envFile = $app->environmentPath() . DIRECTORY_SEPARATOR . '.env.' . $envId;
 
 if (!file_exists($envFile)) {
-    throw new Exception("File not found: {$envFile}");
+  throw new Exception("File not found: {$envFile}");
 }
 
 $app->loadEnvironmentFrom(basename($envFile));
