@@ -31,7 +31,7 @@ class SetupCommandTest extends TestCase
         $this->assertFileExists($resources->targetBootstrapAppPhp());
         $this->assertFileEquals($resources->targetBootstrapAppPhp(), $resources->sourceBootstrapAppPhp());
 
-        $this->assertFileExists($resources->targetBootstrapEnvPhp());
-        $this->assertFileEquals($resources->targetBootstrapEnvPhp(), $resources->sourceBootstrapEnvPhp());
+        $this->assertFileExists($resources->targetBootstrapMultiEnvPhp());
+        $this->assertFileEquals($resources->targetBootstrapMultiEnvPhp(), $resources->sourceBootstrapMultiEnvPhp());
     }
 }

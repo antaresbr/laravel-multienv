@@ -5,7 +5,7 @@ namespace Antares\Multienv;
 class Resources
 {
     private $bootstrapAppPhp;
-    private $bootstrapEnvPhp;
+    private $bootstrapMultiEnvPhp;
 
     protected function bootstrapStub($stub)
     {
@@ -20,7 +20,7 @@ class Resources
     public function __construct()
     {
         $this->bootstrapAppPhp = $this->bootstrapStub('app.php');
-        $this->bootstrapEnvPhp = $this->bootstrapStub('env.php');
+        $this->bootstrapMultiEnvPhp = $this->bootstrapStub('multienv.php');
     }
 
     public function sourceBootstrapAppPhp()
@@ -28,9 +28,9 @@ class Resources
         return ai_multienv_path($this->resourceStub($this->bootstrapAppPhp));
     }
 
-    public function sourceBootstrapEnvPhp()
+    public function sourceBootstrapMultiEnvPhp()
     {
-        return ai_multienv_path($this->resourceStub($this->bootstrapEnvPhp));
+        return ai_multienv_path($this->resourceStub($this->bootstrapMultiEnvPhp));
     }
 
     public function targetBootstrapAppPhp()
@@ -38,8 +38,8 @@ class Resources
         return base_path($this->bootstrapAppPhp);
     }
 
-    public function targetBootstrapEnvPhp()
+    public function targetBootstrapMultiEnvPhp()
     {
-        return base_path($this->bootstrapEnvPhp);
+        return base_path($this->bootstrapMultiEnvPhp);
     }
 }

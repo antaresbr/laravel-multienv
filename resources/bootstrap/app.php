@@ -1,5 +1,8 @@
 <?php
 
+//-- get environment variables at bootstrap time
+Antares\Multienv\BootstrapEnv::singleton();
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -15,7 +18,7 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'env.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'multienv.php';
 
 /*
 |--------------------------------------------------------------------------
