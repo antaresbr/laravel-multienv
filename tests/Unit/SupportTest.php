@@ -3,6 +3,7 @@
 namespace Antares\Multienv\Tests\Unit;
 
 use Antares\Multienv\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 final class SupportTest extends TestCase
 {
@@ -16,7 +17,8 @@ final class SupportTest extends TestCase
         return ai_multienv_infos();
     }
 
-    public function testHelpers()
+    #[Test]
+    public function helpers()
     {
         $path = $this->getPath();
         $this->assertIsString($path);
@@ -26,7 +28,8 @@ final class SupportTest extends TestCase
         $this->assertIsObject($infos);
     }
 
-    public function testInfos()
+    #[Test]
+    public function infos()
     {
         $infos = $this->getInfos();
         $this->assertObjectHasProperty('name', $infos);
