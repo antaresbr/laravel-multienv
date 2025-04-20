@@ -1,2 +1,2 @@
 # laravel-multienv
-A multienvironment (multi tenant) package for Laravel Framework
+A multienvironment (multi tenant) package for Laravel 8 Framework
